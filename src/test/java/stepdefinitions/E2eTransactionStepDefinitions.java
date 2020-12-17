@@ -8,10 +8,13 @@ import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Open;
 import net.thucydides.core.annotations.Managed;
 import org.openqa.selenium.WebDriver;
+import questions.ProcessWas;
 import tasks.AddToThe;
 import tasks.Checkout;
 import tasks.LoginInto;
 import ui.HomePage;
+
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class E2eTransactionStepDefinitions {
     @Managed(driver = "chrome")
@@ -39,6 +42,8 @@ public class E2eTransactionStepDefinitions {
 
     @Then("^I shold see that the purchase was successfuly$")
     public void iSholdSeeThatThePurchaseWasSuccessfuly() {
-
+        actor.should(seeThat(
+                ProcessWas.successful()
+        ));
     }
 }
