@@ -26,18 +26,22 @@ public class AddToThe implements Task {
         actor.attemptsTo(
                 SelectFromOptions.byVisibleText("Price (low to high)").from(FILTER),
                 Click.on(PRODCUT_ITEM.of(item1)),
-                Click.on(ADD_TO_CART_BTN),
+                Click.on(ADD_TO_CART_BTN));
+        actor.attemptsTo(
                 Click.on(BACK_BTN),
                 Click.on(PRODCUT_ITEM.of(item3)),
                 Click.on(ADD_TO_CART_BTN),
                 Click.on(CART_BTN)
         );
         String quanity = QTY_DESCRIPTION.resolveFor(actor).getText();
-        System.out.println(quanity);
+        String[] cadena = quanity.split("\n");
+        String alya = cadena[1];
+        String alya1 = cadena[6];
+        int result = Integer.parseInt(alya)+Integer.parseInt(alya1);
         String cartNumber = NUMBER_CART_ITEM.resolveFor(actor).getText();
         int amount = Integer.parseInt(cartNumber);
         actor.attemptsTo(
-        Check.whether(!quanity.isEmpty() && !cartNumber.isEmpty() && amount == 2)
+        Check.whether(!quanity.isEmpty() && !cartNumber.isEmpty() && amount == result)
                 .andIfSo(Click.on(CHECKOUT_BTN))
         );
     }

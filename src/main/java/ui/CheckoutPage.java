@@ -24,4 +24,6 @@ public class CheckoutPage {
             .located(By.xpath("//a[@class='btn_action cart_button']"));
     public static final Target TXT_FINAL = Target.the("number cart item")
             .located(By.xpath("//h2[@class='complete-header' and contains(.,THANKYOUFORYOURORDER)]"));
+    public static final Target EXAMPLE = Target.the("number cart item")
+            .located(By.xpath("//div[@class='cart_item']"));
 }
