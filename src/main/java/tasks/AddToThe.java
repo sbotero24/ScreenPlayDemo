@@ -35,8 +35,9 @@ public class AddToThe implements Task {
         String quanity = QTY_DESCRIPTION.resolveFor(actor).getText();
         System.out.println(quanity);
         String cartNumber = NUMBER_CART_ITEM.resolveFor(actor).getText();
+        int amount = Integer.parseInt(cartNumber);
         actor.attemptsTo(
-        Check.whether(!quanity.isEmpty() && !cartNumber.isEmpty())
+        Check.whether(!quanity.isEmpty() && !cartNumber.isEmpty() && amount == 2)
                 .andIfSo(Click.on(CHECKOUT_BTN))
         );
     }
